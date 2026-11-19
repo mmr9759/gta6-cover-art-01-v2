@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice State — GTA 6 Style Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VS</span>
+    <div>
+      <h1>VICE STATE <span>Cover Studio</span></h1>
+      <p>Turn any photo into GTA-style poster cover art &mdash; offline, on your machine.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="btn-surprise" class="btn btn-neon" title="Random layout, grade and caption">&#10022; Surprise me</button>
+    <button id="btn-undo" class="btn" title="Undo (Ctrl+Z)">&#8617; Undo</button>
+    <button id="btn-redo" class="btn" title="Redo (Ctrl+Y)">&#8618; Redo</button>
+    <button id="btn-export" class="btn btn-hot">Export PNG</button>
+    <button id="btn-export-all" class="btn btn-hot" title="Download all three post sizes at once">Export all sizes</button>
+  </div>
+</header>
+
+<main class="studio">
+  <aside class="panel left">
+    <section>
+      <h2>1 &middot; Your photos</h2>
+      <p class="hint">Photos never leave this machine. Drop files anywhere, or:</p>
+      <label class="upload-btn">+ Add photos
+        <input id="file-input" type="file" accept="image/*" multiple hidden>
+      </label>
+      <div id="library" class="library"></div>
+      <p class="hint">Click a photo, then click a panel to place it. Click a panel to select it.</p>
+    </section>
+    <section>
+      <h2>2 &middot; Layout <span class="count">9</span></h2>
+      <div id="layouts" class="layouts"></div>
+    </section>
+    <section>
+      <h2>3 &middot; Colour grade <span class="count">6</span></h2>
+      <div id="grades" class="grades"></div>
+      <p class="hint">Skin-safe grades: they warm the scene, never the skin.</p>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <div class="canvas-wrap">
+      <canvas id="preview" width="900" height="1125"></canvas>
+      <div id="panel-menu" class="panel-menu" hidden>
+        <span id="panel-menu-label">Panel 1</span>
+        <button data-act="zoom-in" title="Zoom in">+</button>
+        <button data-act="zoom-out" title="Zoom out">&minus;</button>
+        <button data-act="flip" title="Flip photo">&#8646;</button>
+        <button data-act="clear" title="Remove photo">&times;</button>
+      </div>
+    </div>
+    <div class="stage-bar">
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.01" value="1"></label>
+      <label>Title size <input id="title-size" type="range" min="0.6" max="1.6" step="0.05" value="1"></label>
+      <span id="panel-status" class="status">Panel 1 selected &mdash; drag the photo to move it</span>
+    </div>
+  </section>
+
+  <aside class="panel right">
+    <section>
+      <h2>4 &middot; Caption</h2>
+      <label class="field">Big title
+        <input id="in-title" type="text" value="VICE CITY" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input id="in-subtitle" type="text" value="Streets of Gold" maxlength="40">
+      </label>
+      <label class="field">Top tagline
+        <input id="in-tagline" type="text" value="A LEONIDA STORY" maxlength="40">
+      </label>
+      <label class="field">Title colour
+        <span class="swatches" id="title-colors"></span>
+      </label>
+      <label class="check"><input id="in-badge" type="checkbox" checked> Show &ldquo;VI&rdquo; sun badge</label>
+      <label class="check"><input id="in-frame" type="checkbox" checked> Poster frame &amp; grain</label>
+    </section>
+    <section>
+      <h2>5 &middot; Post size</h2>
+      <div class="sizes" id="sizes">
+        <button data-size="square">Square<br><b>1080 &times; 1080</b></button>
+        <button data-size="portrait" class="active">Portrait<br><b>1080 &times; 1350</b></button>
+        <button data-size="wide">Wide<br><b>1920 &times; 1080</b></button>
+      </div>
+      <p class="hint">Export writes a real PNG at the exact post size. Export all downloads all three.</p>
+    </section>
+    <section class="about">
+      <h2>About</h2>
+      <p>Original art, lettering and grades &mdash; no Rockstar logo, artwork or fonts. Built for the make.fun GTA 6 Cover Art bounty.</p>
+    </section>
+  </aside>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
